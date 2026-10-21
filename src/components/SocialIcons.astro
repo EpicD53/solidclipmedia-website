@@ -1,0 +1,33 @@
+---
+const socialLinks = [
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/solidclip_media/",
+    icon: "fa fa-instagram",
+  },
+  {
+    name: "YouTube",
+    url: "https://www.youtube.com/channel/UCJp-C-2T4-dFhysR2yuizjg",
+    icon: "fa fa-youtube",
+  },
+  {
+    name: "Facebook",
+    url: "https://www.facebook.com/solidclipmedia/",
+    icon: "fa fa-facebook",
+  },
+];
+---
+
+<div class="social-icons">
+  {
+    socialLinks.map((social) => (
+      <a
+        href={social.url}
+        class={social.icon}
+        aria-label={social.name}
+        target="_blank"
+        rel="noopener noreferrer"
+      />
+    ))
+  }
+</div>

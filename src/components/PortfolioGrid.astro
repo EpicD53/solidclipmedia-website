@@ -1,0 +1,95 @@
+---
+interface Category {
+  title: string;
+  subtitle: string;
+  image: string;
+  link?: string;
+  available: boolean;
+}
+
+const categories: Category[] = [
+  {
+    title: "Weddings",
+    subtitle: "Your story. Beautifully told.",
+    image: "/images/wedding_backround_6.jpg",
+    link: "/company/weddings",
+    available: true,
+  },
+  {
+    title: "Corporate",
+    subtitle: "Stories that elevate your brand.",
+    image: "/images/corporate-preview.jpg",
+    available: false,
+  },
+  {
+    title: "Social Events",
+    subtitle: "Moments worth remembering.",
+    image: "/images/social-preview.jpg",
+    available: false,
+  },
+  {
+    title: "Real Estate",
+    subtitle: "Every space has a story.",
+    image: "/images/realestate-preview.jpg",
+    available: false,
+  },
+  {
+    title: "Performances",
+    subtitle: "The energy of every performance.",
+    image: "/images/performance-preview.jpg",
+    available: false,
+  },
+  {
+    title: "Social Media",
+    subtitle: "Content that stands out.",
+    image: "/images/socialmedia-preview.jpg",
+    available: false,
+  },
+];
+---
+
+<section class="portfolio-section" id="portfolio">
+  <div class="portfolio-heading">
+    <span class="section-label">SEE OUR WORK</span>
+    <h2>Professional Portfolio</h2>
+    <p>Explore the stories brought to life.</p>
+  </div>
+
+  <div class="portfolio-grid">
+    {
+      categories.map((category) => (
+        <article class="portfolio-card">
+          {category.available && category.link ? (
+            <a href={category.link} class="portfolio-link">
+              <img
+                src={category.image}
+                alt={`${category.title} videography`}
+                loading="lazy"
+              />
+
+              <div class="portfolio-overlay">
+                <span class="portfolio-tag">EXPLORE</span>
+                <h3>{category.title}</h3>
+                <p>{category.subtitle}</p>
+              </div>
+            </a>
+          ) : (
+            <div class="portfolio-link unavailable">
+              <img
+                src={category.image}
+                alt={`${category.title} videography`}
+                loading="lazy"
+              />
+
+              <div class="portfolio-overlay">
+                <span class="portfolio-tag">COMING SOON</span>
+                <h3>{category.title}</h3>
+                <p>{category.subtitle}</p>
+              </div>
+            </div>
+          )}
+        </article>
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,191 @@
+* {
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: 'BADGRUNGE';
+    src: url('/fonts/BADGRUNGE.ttf') format('truetype');
+  }
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('/fonts/Raleway.ttf') format('truetype'); /* Add this if Raleway is a custom font */
+}
+
+body {
+    background-color: black;
+}
+
+p {
+  color: white;
+}
+h1 {
+  color: white;
+}
+h2 {
+  color: white;
+  text-align: center;
+  font-size: 50px;
+  font-family: 'Raleway';
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+
+}
+h3 {
+  color: white;
+  font-size: 1.5em;
+  margin-top: 5px;
+  font-size: large;
+  font-family: 'Raleway';
+}
+h4 {
+  color: white;
+}
+
+#rawan-vartan {
+  text-align: center;
+}
+
+#description {
+  background-color: rgb(54, 54, 54);
+  padding: 10px;
+  margin-top: 20px;
+  font-size: 20px;
+  font-family: 'Raleway';
+}
+
+#unordered-list {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 50%;
+}
+
+#description ul {
+  color: white;
+}
+
+#contact-container {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  transition: transform .2s;
+}
+
+#button-contact {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  background-color: rgb(175, 0, 0);
+  max-width: 300px;
+  text-decoration: none;
+  padding: 1px; 
+  text-align: center;
+  border-radius: 4px;
+  font-size: x-large;
+  line-height: 0.5%;
+  border: #ffffff;
+  border: 1px solid rgb(255, 255, 255);
+  box-shadow: 2px 2px 8px 2px #ffffff;
+  
+}
+
+#contact-container:hover {
+  transform: scale(1.03);
+}
+
+#email {
+  top: 50px;
+}
+
+#contact-container > a {
+  text-decoration: none; 
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Style all font awesome icons */
+.fa {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  /* Add a hover effect if you want */
+  .fa:hover {
+    opacity: 0.7;
+  }
+
+
+  /* Facebook */
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+  
+  /* Instagram */
+  .fa-instagram {
+    background: #f745f7;
+    color: white;
+  }
+  /* Instagram */
+  .fa-youtube {
+    background: #f56161;
+    color: white;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    position: relative;
+  }
+  
+  #warning {
+    font-size: x-large;
+    margin-bottom: 0;
+  }
+
+  #last-comments {
+    text-align: center;
+    display: inline-block;
+    justify-content: center;
+    position: relative;
+    padding-bottom: 20px;
+  }
+
+  #two-buttons {
+    position: absolute;
+    width: 30%;
+    right: -20px;
+    bottom: 20px;
+    
+}
+
+#jump-to-top {
+    border: #ffffff;
+    border-radius: 2px;
+    border: 1px solid rgb(255, 255, 255);
+    text-decoration: none;
+    color: white;
+    padding: 4px;
+}
+
+#go-home {
+  border: #ffffff;
+  border-radius: 2px;
+  border: 1px solid rgb(255, 255, 255);
+  text-decoration: none;
+  color: white;
+  padding: 4px;
+}
+
+footer {
+    background-color: rgb(54, 54, 54);
+}

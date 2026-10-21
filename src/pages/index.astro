@@ -1,11 +1,104 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import PortfolioGrid from "../components/PortfolioGrid.astro";
+import SocialIcons from "../components/SocialIcons.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import RatingStrip from "../components/RatingStrip.astro";
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="Solid Clip Media | Professional Videography"
+  description="Professional cinematography, wedding videography, and visual storytelling in Toronto, Ontario."
+>
+  <Header />
+  <main id="top">
+    <!-- CINEMATIC VIDEO HERO -->
+    <Hero />
+    <RatingStrip />
+
+    <!-- PORTFOLIO -->
+    <PortfolioGrid />
+
+    <section class="reviews-section" id="reviews">
+      <div class="reviews-heading">
+        <p class="reviews-eyebrow">CLIENT EXPERIENCES</p>
+        <h2>Don't Just Take Our Word For It.</h2>
+      </div>
+
+      <div class="reviews-container">
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <time class="review-date" datetime="2026-09-14"> August 2026 </time>
+          </div>
+
+          <p class="review-text">
+            "It was a pleasure working with Andrew! Our highlight clip was so
+            incredible, we genuinely felt like we were watching a movie trailer.
+            The quality, storytelling, and attention to detail were exceptional.
+            He captured all the special moments so beautifully, and we couldn’t
+            be happier with our wedding video!""
+          </p>
+
+          <p class="review-author">— Diana Harasym</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <time class="review-date" datetime="2026-09-14">
+              October 2024
+            </time>
+          </div>
+          <p class="review-text">
+            "Andrew was very professional and delivered a product well beyond
+            expectations. Not only does he produce a quality product, but he is
+            able to skillfully incorporate feedback from the client (in this
+            case our company) to make sure all of our needs are met.""
+          </p>
+
+          <p class="review-author">— Eric Dumais</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <time class="review-date" datetime="2026-09-14">
+              December 2024
+            </time>
+          </div>
+          <p class="review-text">
+            "...Working with Andrew is more than collaboration, it’s witnessing
+            someone who genuinely loves what they do and pours their soul into
+            every detail. I deeply admire his passion, his drive, and the
+            powerful energy he brings to every endeavor."
+          </p>
+
+          <p class="review-author">— Mushtaq Sayed</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact-container">
+      <h2>Let's Create Something Solid.</h2>
+
+      <p class="contact-description">
+        Have a project in mind? We'd love to hear about it.
+      </p>
+
+      <a href="mailto:solidclipmedia@gmail.com" id="email">
+        <div id="button-contact">
+          <p>Get in Touch ↗</p>
+        </div>
+      </a>
+    </section>
+
+    <!-- SOCIAL MEDIA -->
+    <SocialIcons />
+  </main>
+
+  <Footer />
 </Layout>
