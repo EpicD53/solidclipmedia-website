@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import WeddingFAQ from "../components/WeddingFAQ.astro";
 
 const weddingFilms = [
   {
@@ -108,26 +109,142 @@ const otherFilms = weddingFilms.filter((film) => !film.featured);
       }
     </div>
   </section>
-
   <!-- ABOUT -->
   <section class="wedding-about">
-    <h2>More Than Just a Wedding Video.</h2>
+    <h2>You enjoy the moment. We’ll capture it.</h2>
 
     <p>
-      Your wedding day is filled with moments that deserve to be remembered.
-      From the anticipation before the ceremony to the energy of the dance
-      floor, we capture the emotions, atmosphere, and memories that make your
-      celebration uniquely yours.
+      Your wedding day is filled with moments that deserve to be remembered. The
+      first look, the first kiss, the bouquet toss — we’ll be there to capture
+      it all, without getting in the way. (We dress in black for a reason!)
     </p>
+    <h3>Packages start at $900</h3>
   </section>
+  <WeddingFAQ />
 
-  <!-- CTA -->
-  <section class="wedding-cta">
-    <h2>Let's Make Something Beautiful.</h2>
+  <section class="wedding-inquiry" id="wedding-inquiry">
+    <div class="wedding-inquiry-container">
+      <div class="wedding-inquiry-heading">
+        <span class="wedding-inquiry-label">LET'S MAKE IT OFFICIAL</span>
 
-    <p>We'd love to hear about your wedding.</p>
+        <h2>Let's Capture Your Story.</h2>
 
-    <a href="/contact" class="cta-button"> Inquire About Your Wedding </a>
+        <p>
+          Every wedding is unique, and we'd love to hear about yours. Share a
+          few details about your special day, and we'll get back to you with
+          availability and package options.
+        </p>
+      </div>
+
+      <form
+        name="wedding-inquiry"
+        method="POST"
+        action="/thank-you"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="wedding-inquiry-form"
+      >
+        <input type="hidden" name="form-name" value="wedding-inquiry" />
+
+        <!-- Spam protection -->
+        <p class="wedding-honeypot">
+          <label>
+            Don't fill this out:
+            <input name="bot-field" />
+          </label>
+        </p>
+
+        <!-- Name and email -->
+        <div class="wedding-form-row">
+          <div class="wedding-form-field">
+            <label for="wedding-name">Your Name *</label>
+
+            <input
+              type="text"
+              id="wedding-name"
+              name="name"
+              placeholder="John & Jane"
+              autocomplete="name"
+              required
+            />
+          </div>
+
+          <div class="wedding-form-field">
+            <label for="wedding-email">Email Address *</label>
+
+            <input
+              type="email"
+              id="wedding-email"
+              name="email"
+              placeholder="john@example.com"
+              autocomplete="email"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Date and location -->
+        <div class="wedding-form-row">
+          <div class="wedding-form-field">
+            <label for="wedding-date">Wedding Date *</label>
+
+            <input type="date" id="wedding-date" name="wedding_date" required />
+          </div>
+
+          <div class="wedding-form-field">
+            <label for="wedding-location">Wedding Location *</label>
+
+            <input
+              type="text"
+              id="wedding-location"
+              name="wedding_location"
+              placeholder="Toronto, Ontario"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Coverage -->
+        <div class="wedding-form-field">
+          <label for="wedding-coverage"> Estimated Videography Coverage </label>
+
+          <select id="wedding-coverage" name="coverage">
+            <option value="" selected>
+              How many hours of coverage are you considering?
+            </option>
+
+            <option value="4-6 hours">4–6 hours</option>
+            <option value="6-8 hours">6–8 hours</option>
+            <option value="8-10 hours">8–10 hours</option>
+            <option value="10+ hours">10+ hours</option>
+            <option value="Not sure yet">Not sure yet</option>
+          </select>
+        </div>
+
+        <!-- Message -->
+        <div class="wedding-form-field">
+          <label for="wedding-message"> Tell Us About Your Wedding </label>
+
+          <textarea
+            id="wedding-message"
+            name="message"
+            rows="5"
+            placeholder="Tell us about your wedding plans, the moments you're most excited about, or any questions you have..."
+          ></textarea>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="wedding-form-submit">
+          Inquire About Your Date
+          <span aria-hidden="true">↗</span>
+        </button>
+
+        <p class="wedding-form-note">
+          No commitment required. We'll be in touch to discuss your wedding and
+          confirm availability.
+        </p>
+      </form>
+    </div>
   </section>
 </Layout>
 <!-- VIDEO LIGHTBOX -->
@@ -243,7 +360,7 @@ const otherFilms = weddingFilms.filter((film) => !film.featured);
     background: transparent;
   }
   .wedding-hero {
-    min-height: 85vh;
+    min-height: 65vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -272,7 +389,7 @@ const otherFilms = weddingFilms.filter((film) => !film.featured);
   }
 
   .hero-content h1 {
-    font-size: clamp(40px, 6vw, 85px);
+    font-size: clamp(30px, 6vw, 55px);
     margin-bottom: 25px;
   }
 
@@ -302,7 +419,7 @@ const otherFilms = weddingFilms.filter((film) => !film.featured);
   }
 
   .wedding-portfolio {
-    padding: 100px 8%;
+    padding: 60px 8%;
 
     background: linear-gradient(180deg, #171717 0%, #252525 50%, #111111 100%);
 
@@ -388,7 +505,7 @@ const otherFilms = weddingFilms.filter((film) => !film.featured);
   }
 
   .wedding-about {
-    padding: 110px 20px;
+    padding: 60px 20px;
     text-align: center;
     background: #222;
     color: white;
@@ -404,6 +521,18 @@ const otherFilms = weddingFilms.filter((film) => !film.featured);
     margin: auto;
     line-height: 1.9;
     font-size: 18px;
+  }
+
+  .wedding-about h3 {
+    margin-top: 65px;
+    margin-bottom: 10px;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(18px, 2.5vw, 38px);
+    font-weight: 500;
+    letter-spacing: 1px;
+
+    color: #fff;
   }
 
   .wedding-cta {

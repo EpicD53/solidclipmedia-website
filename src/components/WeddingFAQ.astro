@@ -1,0 +1,71 @@
+---
+const faqs = [
+  {
+    question: "How far in advance should we book?",
+    answer:
+      "We've had booking 2+ years in advance, and bookings for next week. We still recommend reaching out as early as possible, especially for weddings during peak season. Last-minute bookings are available depending on our schedule.",
+  },
+  {
+    question: "Do you travel outside of Toronto?",
+    answer:
+      "Absolutely! While we're based in the Greater Toronto Area, we're happy to travel throughout Ontario and beyond. Travel fees may apply depending on the location.",
+  },
+  {
+    question: "Can we customize our wedding videography package?",
+    answer:
+      "Of course! Every wedding is different, and we're happy to discuss coverage hours, additional videographers, and video deliverables to create a package that fits your needs.",
+  },
+  {
+    question: "How long will it take to receive our wedding film?",
+    answer:
+      "Delivery timelines depend on the length and complexity of your wedding film. As a general guideline, a 7-minute highlight film takes approximately 6–8 weeks, while a 4-hour documentary-style wedding film typically takes 3–5 weeks. Exact delivery timelines will be outlined in your contract.",
+  },
+  {
+    question: "Will you capture our ceremony and speeches?",
+    answer:
+      "We can include full-length ceremony and speech coverage as part of your wedding package. We'll discuss the moments that matter most to you before the wedding.",
+  },
+  {
+    question: "How do we secure our wedding date?",
+    answer:
+      "Once we've discussed your wedding details and agreed on a package, a signed contract and a 20% deposit are required to officially secure your wedding date.",
+  },
+  {
+    question: "Are you able to livestream our event?",
+    answer:
+      "Yes, either a live stream to the internet, or just inside the buiilding for guests, we have the equipment ready. Just let us know!",
+  },
+];
+---
+
+<section class="wedding-faq" id="faq">
+  <div class="wedding-faq-container">
+    <div class="wedding-faq-heading">
+      <span class="wedding-faq-label">GOOD TO KNOW</span>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <p>
+        Planning your wedding comes with plenty of questions. Here are a few
+        answers to help you get started.
+      </p>
+    </div>
+
+    <div class="wedding-faq-list">
+      {
+        faqs.map((faq) => (
+          <details class="wedding-faq-item">
+            <summary>
+              <span>{faq.question}</span>
+              <span class="wedding-faq-icon" aria-hidden="true" />
+            </summary>
+
+            <div class="wedding-faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
