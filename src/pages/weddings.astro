@@ -1,0 +1,562 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const weddingFilms = [
+  {
+    couple: "Diana & Tal",
+    location: "Toronto, Ontario",
+    videoId: "6MYcjXJXdgg",
+    thumbnail: "/images/weddings/jennifer-darrin.jpg",
+    featured: true,
+  },
+  {
+    couple: "Rawan & Vartan",
+    location: "Niagara Falls, Ontario, Canada",
+    videoId: "q-4xKf2KsYE",
+    thumbnail: "/images/weddings/couple-2.jpg",
+    featured: false,
+    zoom: 1.4,
+  },
+  {
+    couple: "Irene & Daniel",
+    location: "Toronto, Ontario",
+    videoId: "u0seGc8Eqz4",
+    thumbnail: "/images/weddings/couple-3.jpg",
+    featured: false,
+    zoom: 1.2,
+  },
+];
+
+const featuredFilm = weddingFilms.find((film) => film.featured);
+
+const otherFilms = weddingFilms.filter((film) => !film.featured);
+---
+
+<Layout title="Wedding Videography | Solid Clip Media">
+  <!-- HERO -->
+  <section class="wedding-hero">
+    <div class="hero-content">
+      <p class="eyebrow">SOLID CLIP MEDIA WEDDINGS</p>
+
+      <h1>Your Story, Beautifully Told.</h1>
+
+      <p>Cinematic wedding films that capture the moments worth reliving.</p>
+
+      <a href="#wedding-films" class="hero-button"> Explore Wedding Films </a>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="wedding-films" class="wedding-portfolio">
+    <div class="section-heading">
+      <p class="eyebrow">OUR WORK</p>
+      <h2>Love Stories We've Told</h2>
+    </div>
+
+    {
+      featuredFilm && (
+        <div class="featured-film">
+          <button
+            type="button"
+            class="film-thumbnail"
+            data-video-id={featuredFilm.videoId}
+            aria-label={`Play ${featuredFilm.couple} wedding film`}
+          >
+            <img
+              src={`https://img.youtube.com/vi/${featuredFilm.videoId}/maxresdefault.jpg`}
+              alt={`${featuredFilm.couple} Wedding Film`}
+              style={`--thumbnail-zoom: ${featuredFilm.zoom ?? 1}`}
+            />
+
+            <span class="play-button">▶</span>
+          </button>
+
+          <div class="film-info">
+            <h3>{featuredFilm.couple}</h3>
+            <p>{featuredFilm.location}</p>
+          </div>
+        </div>
+      )
+    }
+
+    <div class="wedding-grid">
+      {
+        otherFilms.map((film) => (
+          <div class="wedding-card">
+            <button
+              type="button"
+              class="film-thumbnail"
+              data-video-id={film.videoId}
+              aria-label={`Play ${film.couple} wedding film`}
+            >
+              <img
+                src={`https://img.youtube.com/vi/${film.videoId}/maxresdefault.jpg`}
+                alt={`${film.couple} Wedding Film`}
+                loading="lazy"
+                style={`--thumbnail-zoom: ${film.zoom ?? 1}`}
+              />
+
+              <span class="play-button">▶</span>
+            </button>
+
+            <div class="film-info">
+              <h3>{film.couple}</h3>
+              <p>{film.location}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="wedding-about">
+    <h2>More Than Just a Wedding Video.</h2>
+
+    <p>
+      Your wedding day is filled with moments that deserve to be remembered.
+      From the anticipation before the ceremony to the energy of the dance
+      floor, we capture the emotions, atmosphere, and memories that make your
+      celebration uniquely yours.
+    </p>
+  </section>
+
+  <!-- CTA -->
+  <section class="wedding-cta">
+    <h2>Let's Make Something Beautiful.</h2>
+
+    <p>We'd love to hear about your wedding.</p>
+
+    <a href="/contact" class="cta-button"> Inquire About Your Wedding </a>
+  </section>
+</Layout>
+<!-- VIDEO LIGHTBOX -->
+<div
+  id="video-lightbox"
+  class="video-lightbox"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Wedding film player"
+  aria-hidden="true"
+  tabindex="-1"
+>
+  <button type="button" class="lightbox-close" aria-label="Close video">
+    &times;
+  </button>
+
+  <div class="lightbox-video-container">
+    <iframe
+      id="lightbox-player"
+      title="Wedding film"
+      src=""
+      allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+      allowfullscreen></iframe>
+  </div>
+</div>
+<script>
+  const lightbox = document.getElementById("video-lightbox");
+  const player = document.getElementById(
+    "lightbox-player",
+  ) as HTMLIFrameElement | null;
+
+  const closeButton = document.querySelector(
+    ".lightbox-close",
+  ) as HTMLButtonElement | null;
+
+  const videoButtons = document.querySelectorAll(
+    ".film-thumbnail[data-video-id]",
+  );
+
+  let previousFocus: HTMLElement | null = null;
+
+  function openLightbox(videoId: string) {
+    if (!lightbox || !player) return;
+
+    previousFocus = document.activeElement as HTMLElement;
+
+    player.src =
+      `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}` +
+      `?autoplay=1&rel=0&playsinline=1`;
+
+    lightbox.classList.add("active");
+    lightbox.setAttribute("aria-hidden", "false");
+
+    document.body.style.overflow = "hidden";
+
+    closeButton?.focus();
+  }
+
+  function closeLightbox() {
+    if (!lightbox || !player) return;
+
+    lightbox.classList.remove("active");
+    lightbox.setAttribute("aria-hidden", "true");
+
+    // Removing the source stops playback.
+    player.src = "";
+
+    document.body.style.overflow = "";
+
+    previousFocus?.focus();
+  }
+
+  videoButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const videoId = (button as HTMLElement).dataset.videoId;
+
+      if (videoId) {
+        openLightbox(videoId);
+      }
+    });
+  });
+
+  closeButton?.addEventListener("click", closeLightbox);
+
+  lightbox?.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!lightbox?.classList.contains("active")) return;
+
+    if (event.key === "Escape") {
+      closeLightbox();
+    }
+
+    if (event.key === "Tab") {
+      // Keep keyboard focus inside the modal.
+      event.preventDefault();
+      closeButton?.focus();
+    }
+  });
+</script>
+
+<style>
+  :global(header.navbar) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent;
+  }
+  .wedding-hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background:
+      linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.65)),
+      url("/images/weddings/hero.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    color: white;
+    padding: 40px;
+  }
+
+  .hero-content {
+    max-width: 850px;
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(40px, 6vw, 85px);
+    margin-bottom: 25px;
+  }
+
+  .hero-content p {
+    font-size: 19px;
+    line-height: 1.7;
+  }
+
+  .hero-button,
+  .cta-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 35px;
+
+    background: white;
+    color: black;
+
+    text-decoration: none;
+    border-radius: 5px;
+
+    transition: transform 0.3s ease;
+  }
+
+  .hero-button:hover,
+  .cta-button:hover {
+    transform: translateY(-4px);
+  }
+
+  .wedding-portfolio {
+    padding: 100px 8%;
+
+    background: linear-gradient(180deg, #171717 0%, #252525 50%, #111111 100%);
+
+    color: white;
+  }
+
+  .section-heading {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(30px, 4vw, 50px);
+  }
+
+  .featured-film {
+    max-width: 1100px;
+    margin: 0 auto 70px;
+  }
+
+  .film-thumbnail {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+
+  .film-thumbnail img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+
+    transform: scale(var(--thumbnail-zoom, 1));
+
+    transition: transform 0.5s ease;
+  }
+
+  .film-thumbnail:hover img {
+    transform: scale(calc(var(--thumbnail-zoom, 1) * 1.04));
+  }
+
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 75px;
+    height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.85);
+    color: black;
+
+    border-radius: 50%;
+    font-size: 24px;
+  }
+
+  .film-info {
+    padding: 20px 0;
+  }
+
+  .film-info h3 {
+    font-size: 25px;
+    margin-bottom: 5px;
+  }
+
+  .film-info p {
+    color: #777;
+  }
+
+  .wedding-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+
+    max-width: 1100px;
+    margin: auto;
+  }
+
+  .wedding-about {
+    padding: 110px 20px;
+    text-align: center;
+    background: #222;
+    color: white;
+  }
+
+  .wedding-about h2 {
+    font-size: clamp(30px, 4vw, 50px);
+    margin-bottom: 30px;
+  }
+
+  .wedding-about p {
+    max-width: 750px;
+    margin: auto;
+    line-height: 1.9;
+    font-size: 18px;
+  }
+
+  .wedding-cta {
+    text-align: center;
+    padding: 110px 20px;
+    background: #e7e2dc;
+  }
+
+  .wedding-cta h2 {
+    font-size: clamp(30px, 4vw, 50px);
+    margin-bottom: 20px;
+  }
+
+  /* =========================
+   VIDEO LIGHTBOX
+========================= */
+
+  .video-lightbox {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.94);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 99999;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  .video-lightbox.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  /* Video player */
+
+  .lightbox-video-container {
+    position: relative;
+
+    width: min(90vw, 1500px);
+    max-height: 85vh;
+
+    aspect-ratio: 16 / 9;
+
+    background: black;
+
+    border-radius: 8px;
+    overflow: hidden;
+
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.7);
+
+    transform: scale(0.94);
+    transition: transform 0.35s ease;
+  }
+
+  .video-lightbox.active .lightbox-video-container {
+    transform: scale(1);
+  }
+
+  .lightbox-video-container iframe {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    border: none;
+  }
+
+  /* Close button */
+
+  .lightbox-close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+
+    width: 50px;
+    height: 50px;
+
+    background: transparent;
+    border: none;
+
+    color: white;
+    font-size: 42px;
+
+    cursor: pointer;
+    z-index: 2;
+
+    transition: transform 0.2s ease;
+  }
+
+  .lightbox-close:hover {
+    transform: scale(1.15);
+  }
+
+  /* Make thumbnails behave like buttons */
+
+  .film-thumbnail {
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  /* Mobile */
+
+  @media (max-width: 768px) {
+    .lightbox-video-container {
+      width: 96vw;
+      max-height: 75vh;
+      border-radius: 4px;
+    }
+
+    .lightbox-close {
+      top: 15px;
+      right: 15px;
+      font-size: 36px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .video-lightbox,
+    .lightbox-video-container {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .wedding-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .wedding-portfolio {
+      padding: 70px 5%;
+    }
+
+    .wedding-hero {
+      min-height: 75vh;
+    }
+  }
+</style>

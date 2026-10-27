@@ -1,0 +1,70 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Thank You | Solid Clip Media">
+  <main class="thank-you-page">
+    <div class="thank-you-content">
+      <span class="thank-you-icon">✓</span>
+
+      <h1>Message Received.</h1>
+
+      <p>
+        Thanks for reaching out to Solid Clip Media. We'll review your inquiry
+        and get back to you soon.
+      </p>
+
+      <a href="/" class="thank-you-button"> Back to Homepage ↗ </a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .thank-you-page {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: #101010;
+    text-align: center;
+  }
+
+  .thank-you-content {
+    max-width: 550px;
+  }
+
+  .thank-you-icon {
+    display: block;
+    color: #d71920;
+    font-size: 4rem;
+    margin-bottom: 25px;
+  }
+
+  .thank-you-content h1 {
+    color: white;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 20px;
+  }
+
+  .thank-you-content p {
+    color: #aaa;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 35px;
+  }
+
+  .thank-you-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background: #d71920;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 700;
+  }
+
+  .thank-you-button:hover {
+    background: #b8151b;
+  }
+</style>
