@@ -1,0 +1,199 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const socialEvents = [
+  {
+    title: "Gender Reveal - Dianna & Zack",
+    category: "PERSONAL CELEBRATIONS",
+    description:
+      "Capturing the anticipation, excitement, and unforgettable reactions of a special gender reveal celebration. A cinematic keepsake of a moment worth remembering.",
+    videoId: "yR-aahsBPRk",
+  },
+  {
+    title: "Zabava Party - Bloor Festival",
+    category: "CULTURAL EVENTS",
+    description:
+      "An evening filled with Ukrainian music, dancing, and tradition. Our event coverage captures the vibrant atmosphere, lively performances, and energy of this cultural celebration.",
+    videoId: "ZNK4zcmfvJE",
+  },
+  {
+    title: "Baptism - Kaia",
+    category: "FAMILY MILESTONES",
+    description:
+      "Preserving the meaningful moments of a baptism celebration, from the ceremony to the gathering of family and loved ones. A timeless film to cherish for years to come.",
+    videoId: "3sbkR-RVts8",
+  },
+];
+---
+
+<Layout
+  title="Social Events Videography | Solid Clip Media"
+  description="Professional event videography in Toronto and the GTA. Capturing celebrations, cultural events, baptisms, and unforgettable moments."
+>
+  <main class="socialevents-page">
+    <!-- COMBINED INTRO + PORTFOLIO -->
+    <section class="socialevents-projects">
+      <div class="socialevents-projects-heading">
+        <span class="socialevents-label">SOLID CLIP MEDIA</span>
+
+        <h1>Events & Celebrations</h1>
+
+        <p>
+          From intimate family gatherings to lively cultural celebrations,
+          life's special moments deserve to be remembered. We capture the
+          emotions, energy, and little details that make every event unique,
+          creating films you can revisit for years to come.
+        </p>
+      </div>
+
+      <!-- VIDEO GRID -->
+      <div class="socialevents-video-grid">
+        {
+          socialEvents.map((event) => (
+            <article class="socialevents-card">
+              <button
+                type="button"
+                class="socialevents-video film-thumbnail"
+                data-video-id={event.videoId}
+                aria-label={`Play ${event.title} video`}
+              >
+                <img
+                  src={`https://img.youtube.com/vi/${event.videoId}/maxresdefault.jpg`}
+                  alt={`${event.title} Video`}
+                  loading="lazy"
+                />
+
+                <span class="play-button">▶</span>
+              </button>
+
+              <div class="socialevents-card-info">
+                <span class="socialevents-category">{event.category}</span>
+
+                <h3>{event.title}</h3>
+
+                <p>{event.description}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="socialevents-cta">
+      <span class="socialevents-label">LET'S CELEBRATE</span>
+
+      <h2>Your Moments. Our Lens.</h2>
+
+      <p>
+        Planning a special celebration? Let us capture the moments you'll want
+        to relive again and again.
+      </p>
+
+      <a href="/#contact-container" class="socialevents-cta-button">
+        Let's Work Together <span aria-hidden="true">↗</span>
+      </a>
+    </section>
+  </main>
+</Layout>
+<!-- VIDEO LIGHTBOX -->
+<div
+  id="video-lightbox"
+  class="video-lightbox"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Social events video player"
+  aria-hidden="true"
+  tabindex="-1"
+>
+  <button type="button" class="lightbox-close" aria-label="Close video">
+    &times;
+  </button>
+
+  <div class="lightbox-video-container">
+    <iframe
+      id="lightbox-player"
+      title="Social events video"
+      src=""
+      allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+      allowfullscreen></iframe>
+  </div>
+</div>
+<script>
+  const lightbox = document.getElementById("video-lightbox");
+
+  const player = document.getElementById(
+    "lightbox-player",
+  ) as HTMLIFrameElement | null;
+
+  const closeButton = document.querySelector(
+    ".lightbox-close",
+  ) as HTMLButtonElement | null;
+
+  const videoButtons = document.querySelectorAll(
+    ".film-thumbnail[data-video-id]",
+  );
+
+  let previousFocus: HTMLElement | null = null;
+
+  function openLightbox(videoId: string) {
+    if (!lightbox || !player) return;
+
+    previousFocus = document.activeElement as HTMLElement;
+
+    player.src =
+      `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}` +
+      `?autoplay=1&rel=0&playsinline=1`;
+
+    lightbox.classList.add("active");
+    lightbox.setAttribute("aria-hidden", "false");
+
+    document.body.style.overflow = "hidden";
+
+    closeButton?.focus();
+  }
+
+  function closeLightbox() {
+    if (!lightbox || !player) return;
+
+    lightbox.classList.remove("active");
+    lightbox.setAttribute("aria-hidden", "true");
+
+    player.src = "";
+
+    document.body.style.overflow = "";
+
+    previousFocus?.focus();
+  }
+
+  videoButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const videoId = (button as HTMLElement).dataset.videoId;
+
+      if (videoId) {
+        openLightbox(videoId);
+      }
+    });
+  });
+
+  closeButton?.addEventListener("click", closeLightbox);
+
+  lightbox?.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!lightbox?.classList.contains("active")) return;
+
+    if (event.key === "Escape") {
+      closeLightbox();
+    }
+
+    if (event.key === "Tab") {
+      event.preventDefault();
+      closeButton?.focus();
+    }
+  });
+</script>

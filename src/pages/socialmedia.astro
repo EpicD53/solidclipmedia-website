@@ -1,0 +1,122 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const socialMediaProjects = [
+  {
+    title: "Brand Awareness",
+    category: "PROMOTIONAL CONTENT",
+    description:
+      "Showcasing Quality Age Build’s expertise in basement underpinning and foundation work. SolidClip Media handled filming, editing, voice-over sourcing, and custom logo animation to create a professional promotional video that highlights the company’s craftsmanship and services. ",
+    instagramUrl: "https://www.instagram.com/reel/CxONhhUsqtX/",
+    views: "27.7K",
+  },
+  {
+    title: "Event Highlight Reel",
+    category: "BRAND BOOST",
+    description:
+      "A 60-second highlight reel capturing the energy, passion, and excitement of Barvinok Ukrainian Dance School’s performances. Through dynamic filming and rhythmic editing, Solid Clip Media brings the vibrant costumes, traditional choreography, and spirit of Ukrainian dance to life.",
+    instagramUrl: "https://www.instagram.com/reel/Cr3yd9sJ6Pa",
+    views: "17.3K",
+  },
+  {
+    title: "Personal Lifestyle ",
+    category: "CREATIVE STORYTELLING",
+    description:
+      "A one-hour gym filming session transformed into a high-energy fitness video. Through dynamic camera angles, creative editing, and music-driven cuts, Solid Clip Media captured the intensity and dedication behind every workout.",
+    instagramUrl: "https://www.instagram.com/reel/ChQk_y9lYO4",
+    views: "18.7K",
+  },
+];
+---
+
+<Layout
+  title="Social Media Videography | Solid Clip Media"
+  description="Professional social media video production in Toronto and the GTA. Short-form videos, Instagram Reels, promotional content, and creative storytelling by Solid Clip Media."
+>
+  <main class="socialmedia-page">
+    <!-- HERO -->
+    <section class="socialmedia-hero">
+      <span class="socialmedia-label">SOLID CLIP MEDIA</span>
+
+      <h1>Social Media Content</h1>
+
+      <p>
+        Short-form videos that capture attention, tell your story, and leave a
+        lasting impression.
+      </p>
+    </section>
+
+    <!-- INTRO -->
+    <!-- <section class="socialmedia-intro">
+      <h2>Make Every Second Count.</h2>
+
+      <p>
+        In a world where attention spans are short, every second matters. We
+        create engaging, professionally produced social media videos that help
+        brands, businesses, and creators stand out.
+      </p>
+    </section> -->
+
+    <!-- VIDEO EXAMPLES -->
+    <section class="socialmedia-projects">
+      <div class="socialmedia-projects-heading">
+        <span class="socialmedia-label">OUR WORK</span>
+
+        <h2>Featured Content</h2>
+
+        <p>
+          A selection of short-form videos created to engage, inspire, and
+          connect.
+        </p>
+      </div>
+      <div class="socialmedia-video-grid">
+        {
+          socialMediaProjects.map((project) => (
+            <article class="socialmedia-card">
+              <div class="socialmedia-video">
+                <iframe
+                  src={`${project.instagramUrl.replace(/\/$/, "")}/embed/`}
+                  title={project.title}
+                  loading="lazy"
+                  allow="autoplay; encrypted-media; picture-in-picture"
+                  allowfullscreen
+                />
+              </div>
+
+              <div class="socialmedia-card-info">
+                <span class="socialmedia-category">{project.category}</span>
+
+                <h3>{project.title}</h3>
+
+                <p>{project.description}</p>
+
+                {project.views && (
+                  <div class="socialmedia-views">
+                    <i class="fa fa-eye" aria-hidden="true" />
+                    <span>{project.views} views</span>
+                  </div>
+                )}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="socialmedia-cta">
+      <span class="socialmedia-label">LET'S CREATE</span>
+
+      <h2>Ready to Stand Out?</h2>
+
+      <p>
+        Whether you're promoting your business, launching a campaign, or
+        building your online presence, let's create something worth watching.
+      </p>
+
+      <a href="/#contact-container" class="socialmedia-cta-button">
+        Let's Work Together <span aria-hidden="true">↗</span>
+      </a>
+    </section>
+  </main>
+</Layout>

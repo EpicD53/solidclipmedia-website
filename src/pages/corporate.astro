@@ -1,0 +1,234 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const corporateProjects = [
+  {
+    title: "IRegained - MyHand System",
+    category: "OVERVIEW VIDEO",
+    description:
+      "Making innovative technology easier to understand. This instructional video for iRegained’s MyHand System provides a clear, step-by-step guide to using the device, combining detailed close-ups, practical demonstrations, and easy-to-follow explanations. Through thoughtful filming and editing, we transform complex instructions into accessible visual content, helping users confidently understand and operate the system. ",
+    videoId: "rRbeP-mCPsk",
+  },
+  {
+    title: "Trident Banquet Hall and Conference Centre",
+    category: "WEBSITE MATERIAL",
+    description:
+      "From conferences and networking events to weddings and holiday celebrations, Trident Hall offers a versatile space for every occasion. Our promotional video showcases the venue’s atmosphere, elegant interiors, and event possibilities, helping prospective clients envision their next celebration.",
+    videoId: "BgcfXluk4Ok",
+  },
+  {
+    title: "Brilliant Minded Women Annual Gala 2022",
+    category: "MARKETING CONTENT",
+    description:
+      "An evening of inspiration, recognition, and celebration. The Brilliant Minded Women Foundation’s annual gala brings together community leaders, supporters, and changemakers to celebrate achievements and empower the next generation through education and mentorship. Our event film captures the atmosphere, meaningful moments, and spirit of the evening, preserving the celebration while showcasing the foundation’s mission and impact.",
+    videoId: "Hfjy80WfvKw",
+  },
+];
+---
+
+<Layout
+  title="Corporate Videography | Solid Clip Media"
+  description="Professional corporate videography in Toronto and the GTA. Brand films, promotional videos, corporate events, and business storytelling by Solid Clip Media."
+>
+  <main class="corporate-page">
+    <!-- HERO -->
+    <section class="corporate-hero">
+      <div class="corporate-hero-content">
+        <span class="corporate-eyebrow">SOLID CLIP MEDIA</span>
+
+        <h1>Corporate Videography</h1>
+
+        <p>
+          Professional video production that brings your business, your people,
+          and your story into focus.
+        </p>
+
+        <a href="/#contact-container" class="corporate-hero-button">
+          Let's Work Together <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="corporate-projects" id="corporate-projects">
+      <div class="corporate-projects-heading">
+        <span class="corporate-section-label">OUR WORK</span>
+        <h2>Featured Projects</h2>
+        <p>
+          A closer look at the different ways we bring businesses and their
+          stories to life.
+        </p>
+      </div>
+
+      <div class="corporate-project-list">
+        {
+          corporateProjects.map((project, index) => (
+            <article
+              class={`corporate-project ${
+                index % 2 === 1 ? "corporate-project-reverse" : ""
+              }`}
+            >
+              <button
+                type="button"
+                class="corporate-project-video film-thumbnail"
+                data-video-id={project.videoId}
+                data-start={project.start ?? 0}
+                aria-label={`Play ${project.title}`}
+              >
+                <img
+                  src={`https://img.youtube.com/vi/${project.videoId}/maxresdefault.jpg`}
+                  alt={`${project.title} Video`}
+                  loading="lazy"
+                />
+
+                <span class="play-button">▶</span>
+              </button>
+
+              <div class="corporate-project-info">
+                <span class="corporate-project-category">
+                  {project.category}
+                </span>
+
+                <h3>{project.title}</h3>
+
+                <p>{project.description}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+    <!-- INTRO -->
+    <section class="corporate-intro">
+      <span class="corporate-section-label">WHAT WE DO</span>
+
+      <h2>Make Your Business Stand Out.</h2>
+
+      <p>
+        Every business has a story worth telling. Whether you're showcasing your
+        team, promoting a service, or capturing an important event, we combine
+        cinematic visuals with purposeful storytelling to create content that
+        leaves a lasting impression.
+      </p>
+    </section>
+
+    <!-- CTA -->
+    <section class="corporate-cta">
+      <h2>Have a Project in Mind?</h2>
+
+      <p>
+        From the initial concept to the final edit, we're here to help bring
+        your vision to life.
+      </p>
+
+      <a href="/#contact-container" class="corporate-cta-button">
+        Get in Touch <span aria-hidden="true">↗</span>
+      </a>
+    </section>
+  </main>
+</Layout>
+<!-- VIDEO LIGHTBOX -->
+<div
+  id="video-lightbox"
+  class="video-lightbox"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Corporate video player"
+  aria-hidden="true"
+  tabindex="-1"
+>
+  <button type="button" class="lightbox-close" aria-label="Close video">
+    &times;
+  </button>
+
+  <div class="lightbox-video-container">
+    <iframe
+      id="lightbox-player"
+      title="Corporate video"
+      src=""
+      allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+      allowfullscreen></iframe>
+  </div>
+</div>
+<script>
+  const lightbox = document.getElementById("video-lightbox");
+
+  const player = document.getElementById(
+    "lightbox-player",
+  ) as HTMLIFrameElement | null;
+
+  const closeButton = document.querySelector(
+    ".lightbox-close",
+  ) as HTMLButtonElement | null;
+
+  const videoButtons = document.querySelectorAll(
+    ".film-thumbnail[data-video-id]",
+  );
+
+  let previousFocus: HTMLElement | null = null;
+
+  function openLightbox(videoId: string, start: number = 0) {
+    if (!lightbox || !player) return;
+
+    previousFocus = document.activeElement as HTMLElement;
+
+    player.src =
+      `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}` +
+      `?autoplay=1&rel=0&playsinline=1&start=${start}`;
+
+    lightbox.classList.add("active");
+    lightbox.setAttribute("aria-hidden", "false");
+
+    document.body.style.overflow = "hidden";
+
+    closeButton?.focus();
+  }
+
+  function closeLightbox() {
+    if (!lightbox || !player) return;
+
+    lightbox.classList.remove("active");
+    lightbox.setAttribute("aria-hidden", "true");
+
+    // Stop playback.
+    player.src = "";
+
+    document.body.style.overflow = "";
+
+    previousFocus?.focus();
+  }
+
+  videoButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const element = button as HTMLElement;
+
+      const videoId = element.dataset.videoId;
+      const start = Number(element.dataset.start ?? 0);
+
+      if (videoId) {
+        openLightbox(videoId, start);
+      }
+    });
+  });
+
+  closeButton?.addEventListener("click", closeLightbox);
+
+  lightbox?.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!lightbox?.classList.contains("active")) return;
+
+    if (event.key === "Escape") {
+      closeLightbox();
+    }
+
+    if (event.key === "Tab") {
+      event.preventDefault();
+      closeButton?.focus();
+    }
+  });
+</script>
