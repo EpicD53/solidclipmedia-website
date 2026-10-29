@@ -79,20 +79,111 @@ const socialEvents = [
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="socialevents-cta">
-      <span class="socialevents-label">LET'S CELEBRATE</span>
+    <!-- CORPORATE INQUIRY FORM -->
+    <section class="corporate-inquiry" id="corporate-inquiry">
+      <div class="corporate-inquiry-container">
+        <!-- HEADING -->
+        <div class="corporate-inquiry-heading">
+          <span class="corporate-inquiry-label">LET'S WORK TOGETHER</span>
 
-      <h2>Your Moments. Our Lens.</h2>
+          <h2>Your Moments. Our Lens.</h2>
 
-      <p>
-        Planning a special celebration? Let us capture the moments you'll want
-        to relive again and again.
-      </p>
+          <p>
+            Planning a special celebration? Let us capture the moments you'll
+            want to relive again and again.
+          </p>
+        </div>
 
-      <a href="/#contact-container" class="socialevents-cta-button">
-        Let's Work Together <span aria-hidden="true">↗</span>
-      </a>
+        <form
+          name="corporate-inquiry"
+          method="POST"
+          action="/thank-you"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="corporate-inquiry-form"
+        >
+          <input type="hidden" name="form-name" value="corporate-inquiry" />
+
+          <!-- Spam protection -->
+          <p class="corporate-honeypot">
+            <label>
+              Don't fill this out:
+              <input name="bot-field" />
+            </label>
+          </p>
+
+          <!-- NAME + EMAIL -->
+          <div class="corporate-form-row">
+            <div class="corporate-form-field">
+              <label for="corporate-name">Your Name *</label>
+
+              <input
+                type="text"
+                id="corporate-name"
+                name="name"
+                placeholder="John Smith"
+                autocomplete="name"
+                required
+              />
+            </div>
+
+            <div class="corporate-form-field">
+              <label for="corporate-email">Email Address *</label>
+
+              <input
+                type="email"
+                id="corporate-email"
+                name="email"
+                placeholder="john@example.com"
+                autocomplete="email"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- PHONE NUMBER -->
+          <div class="corporate-form-field">
+            <label for="corporate-phone">Phone Number</label>
+
+            <input
+              type="tel"
+              id="corporate-phone"
+              name="phone"
+              placeholder="(416) 555-1234"
+              autocomplete="tel"
+            />
+          </div>
+
+          <!-- PROJECT DETAILS -->
+          <div class="corporate-form-field">
+            <label for="corporate-message">Tell Us About Your Project *</label>
+
+            <textarea
+              id="corporate-message"
+              name="message"
+              rows="5"
+              placeholder="Tell us a little about your project, what you're hoping to achieve, and any other important details..."
+              required></textarea>
+          </div>
+
+          <!-- SUBMIT BUTTON -->
+          <button type="submit" class="corporate-form-submit">
+            Send Your Inquiry
+            <span aria-hidden="true">↗</span>
+          </button>
+
+          <p class="corporate-form-note">
+            No commitment required. We'll review your project details and get
+            back to you to discuss the next steps.
+          </p>
+          <p class="contact-alternative">
+            Prefer email?&nbsp;
+            <a href="mailto:solidclipmedia@gmail.com">
+              solidclipmedia@gmail.com
+            </a>
+          </p>
+        </form>
+      </div>
     </section>
   </main>
 </Layout>

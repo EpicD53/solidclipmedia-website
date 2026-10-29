@@ -849,7 +849,6 @@ a {
 /* EMAIL ALTERNATIVE */
 
 .contact-alternative {
-  text-align: center;
   color: #888;
   font-size: 0.85rem;
   margin: 0;
@@ -2272,6 +2271,241 @@ footer {
   color: #bbb;
   font-size: 17px;
   line-height: 1.8;
+}
+
+/* =========================================
+   CORPORATE INQUIRY FORM
+========================================= */
+
+.corporate-inquiry {
+  padding: 110px 25px 120px;
+
+  background: linear-gradient(
+    135deg,
+    #222 0%,
+    #30191c 50%,
+    #222 100%
+  );
+
+  color: white;
+}
+
+.corporate-inquiry-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* HEADING */
+
+.corporate-inquiry-heading {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto 55px;
+}
+
+.corporate-inquiry-label {
+  display: block;
+
+  color: var(--accent, #d71920);
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+
+  margin-bottom: 20px;
+}
+
+.corporate-inquiry-heading h2 {
+  font-size: clamp(32px, 4vw, 50px);
+  line-height: 1.2;
+
+  margin-bottom: 25px;
+}
+
+.corporate-inquiry-heading p {
+  color: #bbb;
+
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+/* FORM CONTAINER */
+
+.corporate-inquiry-form {
+  background: rgba(15, 15, 15, 0.65);
+
+  padding: 50px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* TWO-COLUMN ROWS */
+
+.corporate-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 25px;
+}
+
+/* FIELDS */
+
+.corporate-form-field {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  margin-bottom: 25px;
+}
+
+.corporate-form-field label {
+  margin-bottom: 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #ddd;
+}
+
+.corporate-form-field input,
+.corporate-form-field select,
+.corporate-form-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 15px 17px;
+
+  background: #252525;
+  color: white;
+
+  border: 1px solid #444;
+  border-radius: 6px;
+
+  font-family: inherit;
+  font-size: 15px;
+
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.corporate-form-field input::placeholder,
+.corporate-form-field textarea::placeholder {
+  color: #888;
+}
+
+.corporate-form-field input:focus,
+.corporate-form-field select:focus,
+.corporate-form-field textarea:focus {
+  outline: none;
+
+  border-color: var(--accent, #d71920);
+  background: #2a2a2a;
+}
+
+.corporate-form-field textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+/* SELECT DROPDOWN */
+
+.corporate-form-field select {
+  cursor: pointer;
+}
+
+.corporate-form-field select option {
+  background: #252525;
+  color: white;
+}
+
+/* SUBMIT BUTTON */
+
+.corporate-form-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  padding: 17px 35px;
+
+  background: var(--accent, #d71920);
+  color: white;
+
+  border: none;
+  border-radius: 6px;
+
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.corporate-form-submit:hover {
+  background: #b8151b;
+  transform: translateY(-2px);
+}
+
+/* NOTE */
+
+.corporate-form-note {
+  margin-top: 20px;
+
+  color: #999;
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* HONEYPOT */
+
+.corporate-honeypot {
+  display: none;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+  .corporate-inquiry {
+    padding: 75px 20px;
+  }
+
+  .corporate-inquiry-heading {
+    margin-bottom: 40px;
+  }
+
+  .corporate-inquiry-heading p {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .corporate-inquiry-form {
+    padding: 30px 20px;
+  }
+
+  .corporate-form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .corporate-form-field {
+    margin-bottom: 22px;
+  }
+
+  .corporate-form-submit {
+    width: 100%;
+  }
 }
 
 /* MOBILE */
