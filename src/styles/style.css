@@ -70,7 +70,7 @@
   }
 
   .header-logo {
-    width: 110px;
+    width: 50px;
   }
 
   .header-nav {
@@ -898,7 +898,6 @@ a {
   align-items: center;
   gap: 15px;
   padding: 30px 0 70px;
-  background: #181818;
 }
 
 .fa {
@@ -1077,7 +1076,7 @@ footer {
   color: white;
   text-align: center;
 
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  text-shadow: 0 5px 10px rgba(0, 0, 0, 0.9);
 }
 
 /* Subtitle */
@@ -1092,6 +1091,7 @@ footer {
   color: rgba(255, 255, 255, 0.85);
 
   margin-bottom: 35px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
 }
 
 /* Explore button */
@@ -1151,6 +1151,7 @@ footer {
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 3px;
+    text-shadow: 0 5px 10px rgba(0, 0, 0, 0.9);
 
   transition: color 0.3s ease;
 }
@@ -1411,7 +1412,6 @@ h4 {
 
 #contact-container {
   margin-top: 10%;
-  margin-bottom: 10%;
   transition: transform .2s;
 }
 
@@ -2198,14 +2198,14 @@ footer {
 
   transform: translate(-50%, -50%);
 
-  width: 75px;
-  height: 75px;
+  width: 60px;
+  height: 60px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.65);
   color: black;
 
   border-radius: 50%;
@@ -2430,14 +2430,14 @@ footer {
 
   transform: translate(-50%, -50%);
 
-  width: 75px;
-  height: 75px;
+  width: 60px;
+  height: 60px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.65);
   color: black;
 
   border-radius: 50%;
@@ -2760,15 +2760,14 @@ footer {
   left: 50%;
 
   transform: translate(-50%, -50%);
-
-  width: 65px;
-  height: 65px;
+  width: 60px;
+  height: 60px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.65);
   color: black;
 
   border-radius: 50%;
@@ -3349,14 +3348,14 @@ footer {
 
   transform: translate(-50%, -50%);
 
-  width: 65px;
-  height: 65px;
+  width: 60px;
+  height: 60px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.65);
   color: black;
 
   border-radius: 50%;
@@ -3622,11 +3621,13 @@ footer {
 
 @media (max-width: 650px) {
   .hero {
-    min-height: 500px;
+    min-height: 400px;
+      height: 70svh;
   }
 
   .hero-video {
     object-position: center;
+    height: 100%;
   }
 
   .hero-logo {
@@ -3648,6 +3649,7 @@ footer {
   .hero-button {
     padding: 13px 25px;
     font-size: 0.7rem;
+    display: none;
   }
 
   .scroll-indicator {
