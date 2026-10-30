@@ -1987,6 +1987,566 @@ footer {
 }
 
 /* =========================================
+   ABOUT ME PAGE
+========================================= */
+
+.aboutme-page {
+  background: #151515;
+  color: #fff;
+  overflow: hidden;
+}
+
+.aboutme-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* SHARED ELEMENTS */
+
+.aboutme-eyebrow {
+  display: block;
+  color: var(--accent, #d71920);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.aboutme-page h1,
+.aboutme-page h2 {
+  letter-spacing: -1.5px;
+}
+
+.aboutme-page h2 {
+  font-size: clamp(32px, 4vw, 50px);
+  line-height: 1.2;
+}
+
+.aboutme-page p {
+  color: #bbb;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.aboutme-hero {
+  padding: 160px 30px 110px;
+
+  background: linear-gradient(
+    180deg,
+    #241719 0%,
+    #151515 100%
+  );
+}
+
+.aboutme-hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 90px;
+}
+
+.aboutme-hero-content h1 {
+  font-size: clamp(48px, 6vw, 80px);
+  line-height: 1.08;
+  margin-bottom: 25px;
+}
+
+.aboutme-hero-content h1 span {
+  color: var(--accent, #d71920);
+}
+
+.aboutme-hero-lead {
+  font-size: 22px !important;
+  font-weight: 500;
+  color: #eee !important;
+  line-height: 1.5 !important;
+  margin-bottom: 25px;
+}
+
+.aboutme-hero-description {
+  max-width: 550px;
+}
+
+.aboutme-hero-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+
+  border-radius: 12px;
+  overflow: hidden;
+  
+
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+.aboutme-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+    transform: scale(1.3); /* Zoom in 30% */
+}
+
+/* =========================================
+   MY STORY
+========================================= */
+
+.aboutme-story {
+  padding: 110px 30px 130px;
+  background: #151515;
+}
+
+.aboutme-section-heading {
+  max-width: 750px;
+  margin-bottom: 65px;
+}
+
+.aboutme-story-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  align-items: center;
+  gap: 85px;
+}
+
+.aboutme-story-image {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 10px;
+  overflow: hidden;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.aboutme-story-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.aboutme-story-text p {
+  margin-bottom: 22px;
+}
+
+.aboutme-story-text p:first-child {
+  color: #fff;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.aboutme-story-highlight {
+  color: #eee !important;
+  font-weight: 600;
+  border-left: 3px solid var(--accent, #d71920);
+  padding-left: 20px;
+  margin-top: 35px;
+}
+
+/* =========================================
+   PHILOSOPHY
+========================================= */
+
+.aboutme-philosophy {
+  padding: 120px 30px;
+
+  background: linear-gradient(
+    135deg,
+    #222 0%,
+    #30191c 50%,
+    #222 100%
+  );
+}
+
+.aboutme-philosophy-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.aboutme-philosophy h2 {
+  margin-bottom: 35px;
+}
+
+.aboutme-philosophy-container > p {
+  margin-bottom: 23px;
+}
+
+.aboutme-quote {
+  position: relative;
+
+  margin: 65px 0;
+  padding: 55px 45px 45px;
+
+  background: rgba(0, 0, 0, 0.25);
+  border-left: 4px solid var(--accent, #d71920);
+  border-radius: 0 10px 10px 0;
+}
+
+.aboutme-quote-mark {
+  position: absolute;
+  top: -5px;
+  left: 35px;
+
+  color: var(--accent, #d71920);
+  font-family: Georgia, serif;
+  font-size: 110px;
+  line-height: 1;
+  opacity: 0.6;
+}
+
+.signedquote {
+  font-size: 40px;
+}
+
+.aboutme-quote .quote {
+  position: relative;
+  z-index: 1;
+
+  color: #fff;
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 600;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.aboutme-quote footer {
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  margin-top: 22px;
+}
+
+.aboutme-philosophy-statement {
+  color: #fff !important;
+  font-size: 22px !important;
+  font-weight: 700;
+  line-height: 1.6 !important;
+
+  margin-top: 35px;
+}
+
+/* =========================================
+   BEYOND THE CAMERA
+========================================= */
+
+.aboutme-personal {
+  padding: 130px 30px;
+  background: #171717;
+}
+
+.aboutme-personal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+
+.aboutme-personal-content h2 {
+  margin-bottom: 30px;
+}
+
+.aboutme-personal-content p {
+  margin-bottom: 22px;
+}
+
+.aboutme-project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  color: #fff;
+  text-decoration: none;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  margin-top: 20px;
+  padding-bottom: 8px;
+
+  border-bottom: 2px solid var(--accent, #d71920);
+
+  transition: color 0.25s ease;
+}
+
+.aboutme-project-link:hover {
+  color: var(--accent, #d71920);
+}
+
+/* PERSONAL PHOTO COLLAGE */
+
+.aboutme-personal-images {
+  position: relative;
+  min-height: 570px;
+}
+
+.aboutme-personal-image-large {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 68%;
+  height: 520px;
+
+  border-radius: 10px;
+  overflow: hidden;
+
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+}
+
+.aboutme-personal-image-small {
+  position: absolute;
+  bottom: -36px;
+  left: -74px;
+
+  width: 55%;
+  height: 390px;
+
+  border: 6px solid #171717;
+  border-radius: 10px;
+  overflow: hidden;
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.aboutme-personal-images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .aboutme-personal-images {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    width: 100%;
+    height: auto;
+    min-height: 0;
+  }
+
+  .aboutme-personal-image-large,
+  .aboutme-personal-image-small {
+    position: static;
+
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    aspect-ratio: auto;
+
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .aboutme-personal-images img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+    max-height: none;
+    aspect-ratio: auto;
+
+    object-fit: contain;
+  }
+}
+
+/* =========================================
+   CTA
+========================================= */
+
+.aboutme-cta {
+  padding: 120px 25px;
+  text-align: center;
+
+  background: linear-gradient(
+    135deg,
+    #222,
+    #30191c,
+    #222
+  );
+}
+
+.aboutme-cta h2 {
+  margin-bottom: 25px;
+}
+
+.aboutme-cta p {
+  max-width: 650px;
+  margin: 0 auto 35px;
+
+  font-size: 17px;
+}
+
+.aboutme-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  padding: 16px 32px;
+
+  background: var(--accent, #d71920);
+  color: #fff;
+
+  border-radius: 5px;
+  text-decoration: none;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.aboutme-cta-button:hover {
+  background: #b8151b;
+  transform: translateY(-2px);
+}
+
+.about-learn-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 12px;
+
+  margin-top: 20px;
+  padding: 12px;
+
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+
+  border: 2px solid rgba(255, 255, 255, 0.12);
+
+  transition:
+    color 0.25s ease,
+    gap 0.25s ease;
+}
+
+.about-learn-more:hover {
+  color: var(--accent, #d71920);
+  gap: 18px;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+  .aboutme-hero-container,
+  .aboutme-story-grid,
+  .aboutme-personal-grid {
+    gap: 45px;
+  }
+
+  .aboutme-personal-images {
+    min-height: 450px;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .aboutme-hero {
+    padding: 125px 20px 75px;
+  }
+
+  .aboutme-hero-container,
+  .aboutme-story-grid,
+  .aboutme-personal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutme-hero-container {
+    gap: 45px;
+  }
+
+  .aboutme-hero-content h1 {
+    font-size: 52px;
+  }
+
+  .aboutme-hero-lead {
+    font-size: 19px !important;
+  }
+
+  .aboutme-hero-image {
+    max-width: 480px;
+    margin: 0 auto;
+    aspect-ratio: 4 / 4;
+  }
+
+  .aboutme-story {
+    padding: 75px 20px 90px;
+  }
+
+  .aboutme-section-heading {
+    margin-bottom: 40px;
+  }
+
+  .aboutme-story-grid {
+    gap: 45px;
+  }
+
+  .aboutme-story-image {
+    max-width: 500px;
+    margin: 0 auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .aboutme-philosophy {
+    padding: 85px 20px;
+  }
+
+  .aboutme-quote {
+    margin: 50px 0;
+    padding: 50px 25px 30px;
+  }
+
+  .aboutme-quote-mark {
+    left: 20px;
+  }
+
+  .aboutme-personal {
+    padding: 85px 20px;
+  }
+
+  .aboutme-personal-grid {
+    gap: 45px;
+  }
+
+  .aboutme-personal-images {
+    max-width: 500px;
+    width: 100%;
+    min-height: 480px;
+    margin: 0 auto;
+  }
+
+
+  .aboutme-cta {
+    padding: 85px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutme-hero-content h1 {
+    font-size: 44px;
+  }
+
+  .aboutme-personal-images {
+    min-height: 380px;
+  }
+}
+
+/* =========================================
    CORPORATE PAGE
 ========================================= */
 
